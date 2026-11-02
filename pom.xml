@@ -22,9 +22,11 @@
         <java.version>17</java.version>
 
         <!-- Configuration SonarCloud -->
-        <sonar.projectKey>amdouni-bilel_beestore-java</sonar.projectKey>
-        <sonar.organization>amdouni-bilel</sonar.organization>
+        <sonar.projectKey>ghaida-rais_demo-devops</sonar.projectKey>
+        <sonar.organization>ghaida-rais</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
+        <!-- Indique à SonarCloud où trouver le rapport JaCoCo -->
         <sonar.coverage.jacoco.xmlReportPaths>
             target/site/jacoco/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
