@@ -96,4 +96,27 @@ class ProduitServiceImplTest {
 
         assertThat(resultat).hasSize(2);
     }
+    @Test
+    @DisplayName("getProduitsEnRuptureStock() doit retourner uniquement les produits avec stock égal à zéro")
+    void getProduitsEnRuptureStock_doitRetournerProduitsEnRupture() {
+
+        // GIVEN
+        Produit produitRupture = Produit.builder()
+                .id(1L).nom("Laptop").stock(0).build();
+
+        Produit produitDisponible = Produit.builder()
+                .id(2L).nom("Souris").stock(10).build();
+
+        when(produitRepository.findAll()).thenReturn(
+                List.of(produitRupture, produitDisponible)
+        );
+
+        // WHEN
+        List<ProduitResponseDTO> resultat =
+                produitService.getProduitsEnRuptureStock();
+
+        // THEN
+        assertThat(resultat).hasSize(1);
+        assertThat(resultat.get(0).getNom()).isEqualTo("Laptop");
+    }
 }
